@@ -1,0 +1,56 @@
+body {
+	background-color: #EEEEEE;
+	background-image: url("colored_grid.png");
+	padding-top: 4%;
+	font-family: helvetica;
+	font-size: 15pt;
+	color: #fff;
+}
+.mainpanel {
+	margin-top: 4%;
+	margin: auto;
+	/*background-color: #f6f6f6;*/
+	width: 80%;
+	height: 90%;
+	border-radius: 5px;
+	border: 2px solid #FFF;
+	box-shadow: 0px 0px 10px #868;
+	position: relative;
+}
+.viewarea{
+	background-image: url("grid.png");
+	width: 80%;
+	height: 100%;
+	border-radius: 5px;
+	float: left;
+	z-index: 1;
+}
+.toolarea{
+	width: 20%;
+	height: 100%;
+	float: left;
+	background-color: #f6f6f6;
+	opacity: .9;
+	box-shadow: -2px 0px 5px #bbb;
+	border-left: 1px solid #888;
+	display: inline-block;
+	border-radius: 5px;
+	position: absolute;
+	z-index: 10;
+}
+.maxsize{
+	padding-top: 10px;
+	width:100%;
+	height:8%;
+}
+.textfield{
+	margin-top: 5px;
+	font-size: 15pt;
+	padding-left: 10px;
+	color: #454545;
+}
+.descriptor{
+	padding-left: 10px;
+	color: #313131;
+	font-weight: bold;
+}
