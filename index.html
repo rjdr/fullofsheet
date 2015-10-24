@@ -7,15 +7,29 @@
 </head>
 
 <body>
+	<div class="header">
+		Drag images from your desktop to the grid below
+	</div>
 	<div class="mainpanel">
-		<div class="viewarea"></div>
+		<div class="viewarea" id="viewarea">
+			<canvas id="ctx" width="1" height="1"></canvas>
+		</div>
 		<div class="toolarea">
-			<div class="maxsize">
+			
+			<div class="toolselector">
 				<div class="descriptor">
-				Max sheet width
+					Select image
 				</div>
-				<input id="resizable" class="textfield" type="text" value="1024" id="maxsizefield">
+				<input class="textfield" type="file" value="Open file..." id="openfilebutton">
 			</div>
+
+			<div id="maxsize" class="toolselector">
+				<div class="descriptor">
+					Max sheet width
+				</div>
+				<input class="textfield" type="text" value="1024" id="maxsizefield">
+			</div>
+
 		</div>
 	</div>
 </body>

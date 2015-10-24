@@ -6,6 +6,24 @@ body {
 	font-size: 15pt;
 	color: #fff;
 }
+.header {
+	margin: 0 auto;
+	transform: translateX(-50%);
+	-webkit-transform: translate(-50%, 0px);
+	-ms-transform: translate(-50%, 0px);
+	left: 50%;
+	display: inline-block;
+	height: 20px;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: #899;
+	opacity: .9;
+	position: relative;
+	z-index: 100;
+	color: #ffE;
+	text-align: center;
+	font-weight: bold;
+}
 .mainpanel {
 	margin-top: 4%;
 	margin: auto;
@@ -29,7 +47,7 @@ body {
 	width: 20%;
 	height: 100%;
 	float: left;
-	background-color: #f6f6f6;
+	background-color: #fafaf6;
 	opacity: .9;
 	box-shadow: -2px 0px 5px #bbb;
 	border-left: 1px solid #888;
@@ -38,10 +56,13 @@ body {
 	position: absolute;
 	z-index: 10;
 }
-.maxsize{
+.toolselector{
 	padding-top: 10px;
 	width:100%;
-	height:8%;
+	height:50px;
+	position: relative;
+	border-bottom: 1px solid #999;
+	border-top: 1px solid #fff;
 }
 .textfield{
 	margin-top: 5px;
@@ -51,6 +72,6 @@ body {
 }
 .descriptor{
 	padding-left: 10px;
-	color: #313131;
+	color: #212121;
 	font-weight: bold;
 }
