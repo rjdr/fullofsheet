@@ -3,11 +3,18 @@ var sprites = [];
 
 // Converts a canvas into an image
 function createImage(ctx){
+	var img = new Image();
+	img.src = ctx.toDataURL("image/png");
+	return img;
+}
 
+function downloadCanvas(link, filename) {
+    link.href = $("#ctx")[0].toDataURL();
+    link.download = filename;
 }
 
 $(document).ready(function(){
-	$(".textfield").css("height", "100%");
+	$(".textfield").css("height", "auto");
 	$(".textfield").css("width", "100%");
 
 	$(".mainpanel").resizable();
@@ -42,5 +49,13 @@ $(document).ready(function(){
 			}
 		}
 	);
-}
+	var img = createImage($("#ctx")[0]);
+	//$("#downloadbutton").attr("href", img.src)
+	
+	$("#downloadbutton").on("click", function(){
+		downloadCanvas(this, 'test.png');
+	}
+	)
+	}
+	
 );
