@@ -30,6 +30,7 @@ function refreshCanvas(){
 		for (i = 0; i < sprites.length; i++){
 			ctx.drawImage(sprites[i].img, sprites[i].x, sprites[i].y);
 		}
+		$("#saveableimage").attr("src", canvas.toDataURL("image/png"));
 	}
 }
 
