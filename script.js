@@ -74,11 +74,10 @@ $(document).ready(function(){
 			}
 		}
 	);
-	var img = createImage($("#ctx")[0]);
-	//$("#downloadbutton").attr("href", img.src)
 	
+	// Downloads the file as the specified file name.png
 	$("#downloadbutton").on("click", function(){
-			downloadCanvas(this, 'test.png');
+			downloadCanvas(this, $("#spritesheetname")[0].value + '.png');
 		}
 	)
 
