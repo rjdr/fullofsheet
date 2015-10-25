@@ -68,6 +68,8 @@ body {
 	font-size: 15pt;
 	padding-left: 10px;
 	color: #454545;
+	height: auto;
+	width: 100%;
 }
 .descriptor{
 	padding-left: 10px;

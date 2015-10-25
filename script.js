@@ -35,8 +35,6 @@ function refreshCanvas(){
 
 $(document).ready(function(){
 	canvas = $("#ctx")[0];
-	$(".textfield").css("height", "auto");
-	$(".textfield").css("width", "100%");
 
 	$(".mainpanel").resizable();
 
