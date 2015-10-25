@@ -49,20 +49,17 @@ $(document).ready(function(){
 				var img = new Image();
 				var x = 0;
 				var y = 0;
+				
 				reader.readAsDataURL(event.target.files[0]);
-				//img.src = event.target.result;
 				reader.onload = function(e){
 					img.src = e.target.result;
 
-					var sprite = {img:img, reader:reader, x:x, y:y};
-					setSpritePosition(sprite, sprites)
-					sprites.push(sprite);
+					// Larger images may take a while to load, so apply an onload fn to them
+					img.onload = function(){
+						var sprite = {img:img, reader:reader, x:x, y:y};
+						setSpritePosition(sprite, sprites)
+						sprites.push(sprite);
 
-					// Draws the latest image
-					// If there are previous images, draw it before the last
-					var ctx = canvas.getContext("2d");
-					//$('#viewarea').append("<img src=\""+img.src+"\" id=\"tester\">");	
-					if (img){
 						// Resize canvas, if necessary
 						if (sprite.x + img.width > canvas.width){
 							canvas.width = sprite.x + img.width;
@@ -71,11 +68,9 @@ $(document).ready(function(){
 							canvas.height = sprite.y + img.height;
 						}
 
-						ctx.fillStyle = '#f9f';
-						ctx.fillRect(0, 0, 70, 70);
 						// Draw all sprites, since resizing clears the canvas
 						refreshCanvas();
-					}			
+					}	
 				}
 				
 			}
