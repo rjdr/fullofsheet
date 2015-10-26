@@ -34,6 +34,51 @@ function refreshCanvas(){
 	}
 }
 
+
+function fileChanged(event){
+	if ($("#openfilebutton")[0].files[0]){
+		var e = $("#openfilebutton")[0];
+		var reader = new FileReader();
+		var img = new Image();
+		var x = 0;
+		var y = 0;
+		
+		reader.readAsDataURL(event.target.files[0]);
+		reader.onload = function(e){
+			img.src = e.target.result;
+
+			// Larger images may take a while to load, so apply an onload fn to them
+			img.onload = function(){
+				var sprite = {img:img, reader:reader, x:x, y:y};
+				setSpritePosition(sprite, sprites)
+				sprites.push(sprite);
+
+				// Resize canvas, if necessary
+				if (sprite.x + img.width > canvas.width){
+					canvas.width = sprite.x + img.width;
+				}
+				if (sprite.y + img.height > canvas.height){
+					canvas.height = sprite.y + img.height;
+				}
+
+				// Draw all sprites, since resizing clears the canvas
+				refreshCanvas();
+
+				// When an image is uploaded, replace the old file upload form
+				// This lets us upload the same file several times
+				$("#openfilebutton").replaceWith('<input class="textfield" type="file" \
+					value="Open file..." id="openfilebutton">');
+				$("#openfilebutton").change(
+					function(event){
+						fileChanged(event);
+					}
+				);
+			}	
+		}
+		
+	}
+}
+
 $(document).ready(function(){
 	canvas = $("#ctx")[0];
 
@@ -42,37 +87,7 @@ $(document).ready(function(){
 	// Checks if a file's been uploaded, and if so, pop it into the sprites
 	$("#openfilebutton").change(
 		function(event){
-			if ($("#openfilebutton")[0].files[0]){
-				var e = $("#openfilebutton")[0];
-				var reader = new FileReader();
-				var img = new Image();
-				var x = 0;
-				var y = 0;
-				
-				reader.readAsDataURL(event.target.files[0]);
-				reader.onload = function(e){
-					img.src = e.target.result;
-
-					// Larger images may take a while to load, so apply an onload fn to them
-					img.onload = function(){
-						var sprite = {img:img, reader:reader, x:x, y:y};
-						setSpritePosition(sprite, sprites)
-						sprites.push(sprite);
-
-						// Resize canvas, if necessary
-						if (sprite.x + img.width > canvas.width){
-							canvas.width = sprite.x + img.width;
-						}
-						if (sprite.y + img.height > canvas.height){
-							canvas.height = sprite.y + img.height;
-						}
-
-						// Draw all sprites, since resizing clears the canvas
-						refreshCanvas();
-					}	
-				}
-				
-			}
+			fileChanged(event);
 		}
 	);
 	
@@ -83,7 +98,7 @@ $(document).ready(function(){
 	)
 
 	// Refreshes the canvas occasionally for when images don't immediately display
-	setInterval(refreshCanvas, 100);
+	setInterval(refreshCanvas, 200);
 
 	}	
 );
