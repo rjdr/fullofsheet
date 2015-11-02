@@ -7,11 +7,9 @@
 </head>
 
 <body>
-	<!--
 	<div class="header">
 		Drag images from your desktop to the grid below
 	</div>
-	-->
 	<div class="mainpanel">
 		<div class="viewarea" id="viewarea">
 			<canvas id="ctx" width="128" height="128"></canvas>
@@ -29,7 +27,7 @@
 				<div class="descriptor">
 					Max sheet width
 				</div>
-				<input class="textfield" type="text" value="1024" id="maxsizefield">
+				<input class="textfield" type="text" value="4096" id="maxsizefield">
 			</div>
 
 			<div class="toolselector">
@@ -53,16 +51,20 @@
 						<img id="saveableimage" src="grid.png" width=32 height=32>
 					</div>
 				</div>
-				
 			</div>
-			<!--
+			<div class="toolselector">
+				<div class="descriptor" id="cleartext">
+					Clear canvas
+				</div>
+				<input id="clearbutton" type="button" value="Clear">
+			</div>
+
 			<div class="framedisplay">
-				<div class="descriptor">
+				<div class="descriptor" id="frametext">
 					Frames
 				</div>
 			</div>
-			-->
-			
+
 		</div>
 
 	</div>

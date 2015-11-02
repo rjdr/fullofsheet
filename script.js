@@ -18,7 +18,14 @@ function downloadCanvas(link, filename) {
 function setSpritePosition(sprite, sprites){
 	if (sprites.length > 0){
 		var lastSprite = sprites[sprites.length - 1];
+		sprite.x = lastSprite.x;
 		sprite.y = lastSprite.y + lastSprite.img.height;
+		// If sprite's bottom is below the max height of the spritesheet, move to the right
+		// use $("#id").val() to get a textfield's value
+		if ((sprite.y + sprite.img.height) > $("#maxsizefield").val()){
+			sprite.y = 0;
+			sprite.x = lastSprite.x + lastSprite.img.width;
+		}
 	}
 }
 
@@ -90,6 +97,14 @@ $(document).ready(function(){
 			fileChanged(event);
 		}
 	);
+
+	// Clears out the sprite listing and the canvas when the clear button is clicked
+	$("#clearbutton").on("click", function(){
+			sprites = [];
+			canvas.width = 10;
+			canvas.height = 10;
+		}
+	)
 	
 	// Downloads the file as the specified file name.png
 	$("#downloadbutton").on("click", function(){
