@@ -18,13 +18,13 @@ function downloadCanvas(link, filename) {
 function setSpritePosition(sprite, sprites){
 	if (sprites.length > 0){
 		var lastSprite = sprites[sprites.length - 1];
-		sprite.x = lastSprite.x;
-		sprite.y = lastSprite.y + lastSprite.img.height;
+		sprite.x = lastSprite.x + lastSprite.img.width;
+		sprite.y = lastSprite.y;
 		// If sprite's bottom is below the max height of the spritesheet, move to the right
 		// use $("#id").val() to get a textfield's value
-		if ((sprite.y + sprite.img.height) > $("#maxsizefield").val()){
-			sprite.y = 0;
-			sprite.x = lastSprite.x + lastSprite.img.width;
+		if ((sprite.x + sprite.img.width) > $("#maxsizefield").val()){
+			sprite.x = 0;
+			sprite.y = lastSprite.y + lastSprite.img.height;
 		}
 	}
 }
