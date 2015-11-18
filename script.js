@@ -41,12 +41,22 @@ function refreshCanvas(){
 	}
 }
 
+// Shows a listing of frames
+function listFrames(sprites){
+	// Gets the frame's name and displays it, along with it's current index #
+	for (i = 0; i < sprites.length; i++){
+		var sprite = sprites[i];
+		var name = sprite.name;
+	}
+}
+
 
 function fileChanged(event){
 	if ($("#openfilebutton")[0].files[0]){
 		var e = $("#openfilebutton")[0];
 		var reader = new FileReader();
 		var img = new Image();
+		var filename = e.value;
 		var x = 0;
 		var y = 0;
 		
@@ -56,7 +66,7 @@ function fileChanged(event){
 
 			// Larger images may take a while to load, so apply an onload fn to them
 			img.onload = function(){
-				var sprite = {img:img, reader:reader, x:x, y:y};
+				var sprite = {img:img, reader:reader, x:x, y:y, name:filename};
 				setSpritePosition(sprite, sprites)
 				sprites.push(sprite);
 
