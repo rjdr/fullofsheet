@@ -114,6 +114,7 @@ $(document).ready(function(){
 			sprites = [];
 			canvas.width = 10;
 			canvas.height = 10;
+			$("#frames").html("");
 		}
 	)
 	
