@@ -50,13 +50,13 @@ function listFrames(sprites){
 	}
 }
 
-
+// Handles uploading of a new file, its display on the canvas, and its frame listing
 function fileChanged(event){
 	if ($("#openfilebutton")[0].files[0]){
 		var e = $("#openfilebutton")[0];
 		var reader = new FileReader();
 		var img = new Image();
-		var filename = e.value;
+		var filename = e.value.split("\\").pop();
 		var x = 0;
 		var y = 0;
 		
@@ -67,8 +67,9 @@ function fileChanged(event){
 			// Larger images may take a while to load, so apply an onload fn to them
 			img.onload = function(){
 				var sprite = {img:img, reader:reader, x:x, y:y, name:filename};
-				setSpritePosition(sprite, sprites)
+				setSpritePosition(sprite, sprites);
 				sprites.push(sprite);
+				$("#frames").append("<div class='frame'>" + sprites.length + ": " + sprite.name+"</div>");
 
 				// Resize canvas, if necessary
 				if (sprite.x + img.width > canvas.width){
